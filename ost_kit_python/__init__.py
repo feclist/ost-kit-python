@@ -83,7 +83,7 @@ class OSTKitEndpoint(OSTKitBase):
         string_to_sign = endpoint + '?' + querystring
 
         # SHA256 hash the request using our secret key
-        signature = hmac.new(self.api_secret, msg=string_to_sign, digestmod=hashlib.sha256).hexdigest()
+        signature = hmac.new(self.api_secret.encode(), msg=string_to_sign.encode('utf-8'), digestmod=hashlib.sha256).hexdigest()
 
         # now add our signature to request params
         params['signature'] = signature
