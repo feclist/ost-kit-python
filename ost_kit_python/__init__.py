@@ -77,7 +77,7 @@ class OSTKitEndpoint(OSTKitBase):
         params.update(auth_params)
 
         # build alphabetically sorted querystring
-        querystring = urllib.urlencode(sorted(params.items()))
+        querystring = urllib.parse.urlencode(sorted(params.items()))
 
         # sign our request using the endpoint plus all the params
         string_to_sign = endpoint + '?' + querystring
